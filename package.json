@@ -4,7 +4,8 @@
   "description": "Construction-landing-page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tailwindcss ./src/styles/tailwind.css -o ./src/styles/main.css --watch",
+    "build": "tailwindcss ./src/styles/tailwind.css -o ./src/styles/main.css"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Bayoumi-dev/Construction-landing-page/issues"
   },
-  "homepage": "https://github.com/Bayoumi-dev/Construction-landing-page#readme"
+  "homepage": "https://github.com/Bayoumi-dev/Construction-landing-page#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.6"
+  }
 }
