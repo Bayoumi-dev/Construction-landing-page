@@ -19,6 +19,12 @@
   },
   "homepage": "https://github.com/Bayoumi-dev/Construction-landing-page#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.1.12",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-nesting": "^10.1.10",
     "tailwindcss": "^3.1.6"
   }
 }
