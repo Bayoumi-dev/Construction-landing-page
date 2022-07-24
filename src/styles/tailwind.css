@@ -69,4 +69,8 @@
        lg:before:-translate-x-2/4 lg:before:bg-secondary 
        lg:before:rounded-full;
    }
+   .clickable {
+      @apply bg-primary fill-white cursor-pointer 
+      hover:bg-primary/90 !important;
+   }
 }
