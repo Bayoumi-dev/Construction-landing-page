@@ -40,3 +40,33 @@
    }
 }
 
+@layer components {
+   /* Open the nav-menu */
+   .open {
+      &.menu {
+         @apply opacity-100 top-20 duration-300;
+         & .link {
+            @apply odd:left-0 even:right-0 duration-700 delay-300;
+         }
+         & ~ .close {
+            & .burger-icon {
+               @apply bg-gray-light;
+               & span {
+                  @apply w-11/12 h-[0.125rem] bg-body block 
+                   first-of-type:rotate-45 first-of-type:translate-y-[0.4375rem] 
+                   [&:nth-of-type(2)]:opacity-0 [&:nth-of-type(2)]:duration-100 
+                   last-of-type:-rotate-45 last-of-type:-translate-y-[0.4375rem];
+               }
+            }
+         }
+      }
+   }
+
+   .pg-active {
+      @apply font-semibold text-secondary relative 
+       lg:before:absolute lg:before:w-1 lg:before:h-1 
+       lg:before:-bottom-1 lg:before:left-2/4 
+       lg:before:-translate-x-2/4 lg:before:bg-secondary 
+       lg:before:rounded-full;
+   }
+}
