@@ -677,6 +677,10 @@ hr{
   margin-left: auto;
   margin-right: auto;
 }
+.my-8{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .mb-\[0\.3125rem\]{
   margin-bottom: 0.3125rem;
 }
@@ -743,6 +747,9 @@ hr{
 .w-fit{
   width: fit-content;
 }
+.w-52{
+  width: 13rem;
+}
 .min-w-\[5\.2rem\]{
   min-width: 5.2rem;
 }
@@ -806,6 +813,9 @@ hr{
 .rounded-lg{
   border-radius: 0.5rem;
 }
+.rounded-full{
+  border-radius: 9999px;
+}
 .rounded-bl-\[10rem\]{
   border-bottom-left-radius: 10rem;
 }
@@ -841,6 +851,10 @@ hr{
   --tw-bg-opacity: 1;
   background-color: rgb(24 167 185 / var(--tw-bg-opacity));
 }
+.bg-gray-light{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 249 / var(--tw-bg-opacity));
+}
 .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -870,6 +884,10 @@ hr{
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 .pt-8{
   padding-top: 2rem;
@@ -1212,6 +1230,10 @@ hr{
     margin-bottom: -2rem;
   }
 
+  .lg\:mb-18{
+    margin-bottom: 4.5rem;
+  }
+
   .lg\:flex{
     display: flex;
   }
@@ -1230,6 +1252,10 @@ hr{
 
   .lg\:w-\[40\.5rem\]{
     width: 40.5rem;
+  }
+
+  .lg\:w-full{
+    width: 100%;
   }
 
   .lg\:max-w-none{
@@ -1279,6 +1305,11 @@ hr{
   .lg\:py-0{
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+
+  .lg\:py-16{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .lg\:pt-14{
