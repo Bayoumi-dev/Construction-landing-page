@@ -147,3 +147,131 @@ const moveSlide = move => {
 }
 next.addEventListener('click', _ => moveSlide('next'))
 prev.addEventListener('click', _ => moveSlide('prev'))
+
+/**
+ * Message from
+ */
+const messageFrom = document.forms['ms-from']
+// Handle the message from
+const handleMessageFrom = e => {
+   e.preventDefault()
+
+   const nameInput = e.target.name,
+      emailInput = e.target.email,
+      subjectInput = e.target.subject,
+      messageInput = e.target.message
+
+   const form = {
+      name: nameInput.value,
+      email: emailInput.value,
+      subject: subjectInput.value,
+      message: messageInput.value,
+   }
+
+   // Validate each input, then send the message and
+   // reset the form
+   !inputChecker(nameInput, checkValidName)
+      ? inputChecker(nameInput, checkValidName)
+      : !inputChecker(emailInput, checkValidEmail)
+      ? inputChecker(emailInput, checkValidEmail)
+      : !inputChecker(subjectInput, checkField)
+      ? inputChecker(subjectInput, checkField)
+      : !inputChecker(messageInput, checkField)
+      ? inputChecker(messageInput, checkField)
+      : (sendMessage(form),
+        resetForm([nameInput, emailInput, subjectInput, messageInput]))
+}
+messageFrom.addEventListener('submit', handleMessageFrom)
+
+const sendMessage = message => {
+   // tell the user your message has been received
+   document.getElementById('send').innerHTML = `
+    <img src="assets/check-circle.svg" alt="" class="animate zoom-in start-animate">
+    <span class="animate fade-in start-animate">Your message has been received.</span>
+    `
+   console.log(message)
+}
+
+/**
+ * @description Reset Form
+ * @param {HTMLElement[]} inputs
+ * @returns Empty inputs
+ */
+const resetForm = inputs => inputs.forEach(input => (input.value = ''))
+
+/**
+ * @description Get the input label
+ * @param {HTMLElement} Input
+ * @returns {HTMLElement} The Label
+ */
+const label = input => input.parentElement
+const labelTxt = label => label.querySelector('.label')
+
+/**
+ * @description Function to check the input
+ * @param {HTMLElement} input
+ * @param {function} checkValid
+ * @returns {boolean}
+ */
+const inputChecker = (input, checkValid) => {
+   if (typeof checkValid(input.value) === 'string') {
+      input.focus()
+      label(input).classList.add('error')
+      // checkField has different parameter
+      checkValid === checkField
+         ? (labelTxt(label(input)).textContent = checkValid(
+              input.value,
+              input.name
+           ))
+         : (labelTxt(label(input)).textContent = checkValid(input.value))
+      // Check input every change
+      input.addEventListener('change', _ => inputChecker(input, checkValid))
+      return false
+   } else {
+      label(input).classList.remove('error')
+      labelTxt(label(input)).textContent = input.name
+      return true
+   }
+}
+
+/**
+ * @description Check the field
+ * @param {HTMLElement} input
+ * @param {string} value
+ * @returns {boolean | string} Is the field has value
+ */
+const checkField = (value, name) =>
+   !value ? `${name} (Please fill out this field)` : true
+
+/**
+ * @description Name Validation
+ * @param {string} Name
+ * @returns {boolean | string} Is name validation
+ */
+const checkValidName = name =>
+   !name
+      ? 'Please enter your name'
+      : !isValidName(name)
+      ? 'Please provide a valid name'
+      : true
+
+// is the email address valid
+const isValidName = name => /[a-zA-Z]/.test(name)
+
+/**
+ * @description Email Validation
+ * @param {string} Email
+ * @returns {boolean | string} Boolean - Is email valid | String - Email is invalid
+ */
+const checkValidEmail = email =>
+   !email
+      ? 'Please enter your email'
+      : !isValidEmail(email)
+      ? 'Please provide a valid email address'
+      : true
+
+// is the email address valid
+const isValidEmail = email =>
+   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+   )

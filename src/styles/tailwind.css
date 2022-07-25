@@ -41,6 +41,50 @@
 }
 
 @layer components {
+   /* Custom Form */
+   .form {
+      @apply max-w-120 flex flex-col gap-5 mx-auto xl:mx-0;
+      & label {
+         @apply lg:text-lg capitalize relative;
+         & .label {
+            @apply absolute top-4 left-4 lg:top-5 
+            lg:left-6 z-10 duration-300;
+         }
+      }
+      & input,
+      & textarea {
+         @apply w-full bg-gray-light text-secondary 
+         lg:text-lg p-4 lg:py-5 lg:px-6 rounded-lg border 
+         border-gray-light focus:bg-white focus:border-primary 
+         autofill:border-gray-light autofill:!shadow-autofill 
+         outline-none;
+      }
+      & input:focus ~ .label,
+      & textarea:focus ~ .label,
+      & input:not(:placeholder-shown) ~ .label,
+      & textarea:not(:placeholder-shown) ~ .label {
+         @apply bg-white px-1 rounded-sm left-3 lg:left-5 
+         text-sm text-body -translate-y-[calc(50%_+_1rem)];
+      }
+      & input:focus ~ .label,
+      & textarea:focus ~ .label {
+         @apply text-primary left-3 lg:left-5;
+      }
+      & input:not(:placeholder-shown),
+      & textarea:not(:placeholder-shown) {
+         @apply bg-white;
+      }
+      .error {
+         & .label {
+            @apply !text-error;
+         }
+         & input,
+         & textarea {
+            @apply !border-error bg-white;
+         }
+      }
+   }
+
    /* Open the nav-menu */
    .open {
       &.menu {
