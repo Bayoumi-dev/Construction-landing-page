@@ -9,7 +9,7 @@
    /* Typography */
    html {
       @apply font-['Poppins',_sans-serif] 
-      3xl:text-[1.2rem] scroll-smooth scrollbar;git 
+      3xl:text-[1.2rem] scroll-smooth scrollbar;
    }
    body {
       @apply text-body;
@@ -141,5 +141,22 @@
    .clickable {
       @apply bg-primary fill-white cursor-pointer 
       hover:bg-primary/90 !important;
+   }
+}
+
+@layer utilities {
+   .animate {
+      @apply opacity-0 duration-500 
+      ![animation-play-state:paused];
+      &.start-animate {
+         @apply opacity-100 
+         ![animation-play-state:running];
+      }
+      &-none {
+         @apply opacity-100 ![animation:none];
+      }
+      &-container {
+         @apply overflow-hidden;
+      }
    }
 }

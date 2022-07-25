@@ -321,3 +321,68 @@ const emailInputChecker = emailInput => {
       return true
    }
 }
+
+/**
+ * Start the animation when the element is on the viewport
+ */
+const animations = document.body.querySelectorAll('.animate'),
+   animateOptions = {
+      threshold: 0.3,
+   },
+   animateOnScrolling = new IntersectionObserver(elements => {
+      elements.forEach(element => {
+         if (element.isIntersecting) {
+            const elementStyle = getComputedStyle(element.target)
+            let delay = elementStyle.animationDelay.replace('s', '') * 1000,
+               duration =
+                  elementStyle.animationDuration.replace('s', '') * 1000,
+               animateTimeout = duration + 100
+            // Wait for the delay
+            if (delay) {
+               element.target.style.animationDelay = '0s'
+               setTimeout(_ => {
+                  element.target.classList.add('start-animate')
+                  startAnimate(element.target, animateTimeout)
+               }, delay)
+            } else {
+               startAnimate(element.target, animateTimeout)
+            }
+            // Start the stats counter
+            element.target.id === 'stats' && !iCount && startStatsCount()
+         }
+      })
+   }, animateOptions)
+// Execute the animateOnScrolling(observer)
+animations.forEach(animate => {
+   animateOnScrolling.observe(animate)
+})
+
+/**
+ * @description Start the animations
+ * @param {HTMLElement} element
+ * @param {number} animateTimeout
+ */
+const startAnimate = (element, animateTimeout) => {
+   element.classList.add('start-animate')
+   setTimeout(_ => element.classList.remove('animate'), animateTimeout)
+}
+
+/**
+ * Animated Counter for stats
+ */
+let iCount = 0
+const startStatsCount = _ => {
+   iCount = 1
+   const statsNum = document.querySelectorAll('#stats [data-val]'),
+      speed = 1000
+   statsNum.forEach(statNum => {
+      const target = +statNum.getAttribute('data-val')
+      let inc = Math.ceil(target / speed)
+      let count = Math.ceil(target * 0.98)
+      const counter = setInterval(() => {
+         count = count + inc > target ? target : count + inc
+         statNum.textContent = count
+         count === target && clearInterval(counter)
+      }, 70)
+   })
+}
