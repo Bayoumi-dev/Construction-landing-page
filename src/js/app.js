@@ -275,3 +275,49 @@ const isValidEmail = email =>
    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       email
    )
+
+/**
+ * Get in touch From
+ */
+const getInTouchForm = document.forms['get-in-touch'],
+   Warning = getInTouchForm.querySelector('#Warning')
+// Handle the form
+const handleGetInTouchForm = e => {
+   e.preventDefault()
+   const emailInput = e.target.email
+   emailInputChecker(emailInput) &&
+      (sendEmail(emailInput.value), resetForm([emailInput]))
+}
+getInTouchForm.addEventListener('submit', handleGetInTouchForm)
+
+/**
+ * @description Send the email address to get in touch
+ * tell the user your email has been received
+ * @param {object} email - the email address
+ */
+const sendEmail = email => {
+   getInTouchForm.querySelector('#done').removeAttribute('hidden')
+   getInTouchForm.querySelector('#done span').textContent =
+      'Your email has been received.'
+   console.log(email)
+}
+
+/**
+ * @description Function to check the email input
+ * @param {HTMLElement} emailInput  - Email input
+ * @returns {boolean} Is email valid
+ */
+const emailInputChecker = emailInput => {
+   if (typeof checkValidEmail(emailInput.value) === 'string') {
+      emailInput.focus()
+      Warning.removeAttribute('hidden')
+      getInTouchForm.querySelector('#done').setAttribute('hidden', '')
+      setTimeout(_ => Warning.setAttribute('hidden', ''), 5000)
+      Warning.querySelector('span').textContent = checkValidEmail(
+         emailInput.value
+      )
+   } else {
+      Warning.setAttribute('hidden', '')
+      return true
+   }
+}
