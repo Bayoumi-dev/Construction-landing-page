@@ -9,7 +9,7 @@
    /* Typography */
    html {
       @apply font-['Poppins',_sans-serif] 
-      3xl:text-[1.2rem] scroll-smooth;
+      3xl:text-[1.2rem] scroll-smooth scrollbar;git 
    }
    body {
       @apply text-body;
@@ -81,6 +81,31 @@
          & input,
          & textarea {
             @apply !border-error bg-white;
+         }
+      }
+   }
+
+   /* Custom Scrollbar */
+   .scrollbar {
+      @apply [scrollbar-width:thin] 
+      [scrollbar-color:theme(colors.primary.DEFAULT)_theme(colors.gray.DEFAULT)];
+      &::-webkit-scrollbar {
+         @apply max-w-[10px];
+         &-track {
+            @apply bg-gray shadow-inner;
+         }
+         &-thumb {
+            @apply bg-primary;
+         }
+         &-thumb:hover {
+            @apply bg-primary-light;
+         }
+      }
+      &-section {
+         &::-webkit-scrollbar-track {
+            @apply bg-gray border-0 border-solid 
+               border-l-[5px] border-l-transparent 
+               bg-clip-content;
          }
       }
    }
