@@ -1,4 +1,4 @@
-# Construction-landing-page
+# Construction Landing Page
 ## Table of Contents
 
 - [Overview](#overview)
