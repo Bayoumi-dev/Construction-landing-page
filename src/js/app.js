@@ -255,7 +255,7 @@ const checkValidName = name =>
       ? 'Please provide a valid name'
       : true
 
-// is the email address valid
+// is the name valid
 const isValidName = name => /[a-zA-Z]/.test(name)
 
 /**
