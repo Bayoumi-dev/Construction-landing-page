@@ -8,4 +8,6 @@
       "Patnerships"
    ],
    "css.lint.unknownAtRules": "ignore",
+   "editor.tabCompletion": "on",
+   "diffEditor.codeLens": true,
 }

@@ -10,9 +10,15 @@
       <title>Construction Landing page</title>
    </head>
 
-   <body>
+   <body class="overflow-hidden">
+      <!-- Spinner -->
+      <div class="spinner fixed top-0 left-0 z-50 w-full h-full bg-white flex items-center 
+            justify-center opacity-100 visible transition duration-700">
+         <div class="border-4 border-solid border-primary border-t-primary/10 rounded-full 
+         w-12 h-12 animate-spin"></div>
+      </div>
       <header
-         class="sticky top-0 z-50 bg-white/95 shadow-md lg:shadow-none 
+         class="sticky top-0 z-40 bg-white/95 shadow-md lg:shadow-none 
          lg:bg-transparent lg:relative animate animate-fade-in">
          <!-- header__container -->
          <div
@@ -21,7 +27,7 @@
             <div
                class="uppercase text-lg font-semibold text-primary 
                tracking-tighter relative lg:-left-4 lg:text-2xl">
-               <a href="#no-action">Construction</a>
+               <a href="#">Construction</a>
             </div>
             <!-- nav menu -->
             <nav>
@@ -36,42 +42,43 @@
                      <a
                         href="#home"
                         class="w-inherit py-3 text-lg border border-transparent 
-                        border-y-body/30 min-w-[5.2rem] lg:border-none lg:py-0 
-                        hover:text-secondary lg:p-4 hover:bg-gray-light 
-                        lg:hover:bg-primary/5 lg:rounded-full duration-500 
-                        pg-active">
+                        border-y-body/30 lg:border-none lg:py-0 
+                        hover:text-secondary lg:p-3 hover:bg-gray-light 
+                        lg:hover:bg-primary/10 lg:rounded-full duration-500 
+                        lg:pg-active">
                         Home
                      </a>
                   </li>
                   <li class="w-full relative -right-full lg:right-0 link">
                      <a
-                        href="#no-action"
+                        href="#why-us"
                         class="w-inherit py-3 text-lg border border-transparent 
-                        border-b-body/30 min-w-[5.2rem] lg:border-none lg:py-0 
-                        hover:text-secondary lg:p-4 hover:bg-gray-light 
-                        lg:hover:bg-primary/5 lg:rounded-full duration-500 
+                        border-b-body/30 lg:border-none lg:py-0 
+                        hover:text-secondary lg:p-3 hover:bg-gray-light 
+                        lg:hover:bg-primary/10 lg:rounded-full duration-500 
                         whitespace-nowrap">
-                        About Us
+                        Why Us
                      </a>
                   </li>
                   <li class="w-full relative -left-full lg:left-0 link">
                      <a
-                        href="#no-action"
+                        href="#contact-us"
                         class="w-inherit py-3 text-lg border border-transparent 
-                        border-b-body/30 min-w-[5.2rem] lg:border-none lg:py-0 
-                        hover:text-secondary lg:p-4 hover:bg-gray-light 
-                        lg:hover:bg-primary/5 lg:rounded-full duration-500">
-                        Services
+                        border-b-body/30 lg:border-none lg:py-0 
+                        hover:text-secondary lg:p-3 hover:bg-gray-light
+                        lg:hover:bg-primary/10 lg:rounded-full duration-500
+                        whitespace-nowrap">
+                        Contact Us
                      </a>
                   </li>
                   <li class="w-full relative -right-full lg:right-0 link">
                      <a
-                        href="#no-action"
+                        href="#blogs"
                         class="w-inherit py-3 text-lg border border-transparent 
-                        border-b-body/30 min-w-[5.2rem] lg:border-none lg:py-0 
-                        hover:text-secondary lg:p-4 hover:bg-gray-light 
-                        lg:hover:bg-primary/5 lg:rounded-full duration-500">
-                        Project
+                        border-b-body/30 lg:border-none lg:py-0 
+                        hover:text-secondary lg:p-3 hover:bg-gray-light 
+                        lg:hover:bg-primary/10 lg:rounded-full duration-500">
+                        Blogs
                      </a>
                   </li>
                </ul>
@@ -289,7 +296,7 @@
          </section>
 
          <!-- Why Choose us Section -->
-         <section class="animate-container">
+         <section id="why-us" class="animate-container">
             <div class="container py-12 lg:py-20">
                <!-- heading of section -->
                <div
@@ -1032,7 +1039,7 @@
          </section>
 
          <!-- Blogs Section -->
-         <section>
+         <section id="blogs">
             <div class="container py-12 lg:py-20 text-center animate animate-fade-in">
                <h2 class="animate animate-slide-up lg:animate-none">
                   Latest Blogs
@@ -1217,6 +1224,24 @@
                </a>
             </div>
          </section>
+
+         <!-- Scroll Button -->
+         <button
+            id="scroll-btn"
+            aria-label="Scroll to top button"
+            class="w-12 h-12 flex items-center justify-center bg-primary rounded-full 
+            shadow-2xl fixed bottom-7 right-7 z-50 group hover:opacity-90 opacity-0 
+            translate-y-18 duration-700"
+            >
+            <svg
+               width="36"
+               height="36"
+               viewBox="0 0 36 36"
+               fill="white"
+               xmlns="http://www.w3.org/2000/svg">
+               <path d="M18 27.0001C18.2983 27.0001 18.5845 26.8815 18.7955 26.6706C19.0064 26.4596 19.125 26.1734 19.125 25.8751V12.8408L23.9535 17.6716C24.0581 17.7762 24.1822 17.8591 24.3189 17.9157C24.4556 17.9723 24.602 18.0015 24.75 18.0015C24.8979 18.0015 25.0444 17.9723 25.181 17.9157C25.3177 17.8591 25.4419 17.7762 25.5465 17.6716C25.6511 17.567 25.734 17.4428 25.7906 17.3061C25.8472 17.1695 25.8764 17.023 25.8764 16.8751C25.8764 16.7271 25.8472 16.5807 25.7906 16.444C25.734 16.3073 25.6511 16.1832 25.5465 16.0786L18.7965 9.32856C18.692 9.22379 18.5678 9.14067 18.4311 9.08395C18.2945 9.02724 18.1479 8.99805 18 8.99805C17.852 8.99805 17.7055 9.02724 17.5688 9.08395C17.4321 9.14067 17.308 9.22379 17.2035 9.32856L10.4535 16.0786C10.2422 16.2898 10.1235 16.5763 10.1235 16.8751C10.1235 17.1738 10.2422 17.4603 10.4535 17.6716C10.6647 17.8828 10.9512 18.0015 11.25 18.0015C11.5487 18.0015 11.8352 17.8828 12.0465 17.6716L16.875 12.8408V25.8751C16.875 26.1734 16.9935 26.4596 17.2045 26.6706C17.4154 26.8815 17.7016 27.0001 18 27.0001Z" />
+            </svg>
+         </button>
       </main>
 
       <!-- Footer -->

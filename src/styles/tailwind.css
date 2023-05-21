@@ -144,6 +144,13 @@
    }
 }
 
+.spinner-hide {
+   @apply opacity-0 invisible;
+}
+.show-scroll-btn {
+   @apply opacity-100 translate-y-0;
+}
+
 @layer utilities {
    .animate {
       @apply opacity-0 duration-500 

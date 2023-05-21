@@ -1,7 +1,8 @@
 /**
  * Global Rules
  */
-const header = document.body.querySelector('header'),
+const spinner = document.body.querySelector('.spinner'),
+   header = document.body.querySelector('header'),
    menu = document.body.querySelector('#menu'),
    menuList = document.body.querySelectorAll('#menu li'),
    menuBtn = document.getElementById('menu-btn'),
@@ -9,8 +10,21 @@ const header = document.body.querySelector('header'),
    engcardLists = document.body.querySelectorAll('[data-dropdown]'),
    engDropdownBtns = document.body.querySelectorAll(
       '[aria-label="dropdown list"]'
-   )
+   ),
+   scrollBtn = document.getElementById('scroll-btn')
 
+/**
+ * Spinner
+ * Wait screen until the content loaded
+ */
+addEventListener('load', () => {
+   spinner.classList.add('spinner-hide')
+   document.body.style.overflow = 'auto'
+   // Execute the animateOnScrolling(observer)
+   animations.forEach(animate => {
+      animateOnScrolling.observe(animate)
+   })
+})
 /**
  * Handle Open Menu
  */
@@ -35,6 +49,27 @@ const closeMenu = e => {
       // Remove event after closed the Menu
       window.removeEventListener('click', closeMenu))
 }
+
+/**
+ * @description Show & hide Scroll to top button
+ */
+const scrollButtonVisibility = _ =>
+   scrollY > 500
+      ? scrollBtn.classList.add('show-scroll-btn')
+      : scrollBtn.classList.remove('show-scroll-btn')
+// Listen for scroll events
+addEventListener('scroll', scrollButtonVisibility)
+
+/**
+ * @description Scroll to Top when click on button
+ */
+const handleScrollButton = _ => {
+   scroll({
+      top: 0,
+      behavior: 'smooth',
+   })
+}
+scrollBtn.addEventListener('click', handleScrollButton)
 
 /**
  * Handle The Engineer Cards Dropdown
@@ -352,10 +387,6 @@ const animations = document.body.querySelectorAll('.animate'),
          }
       })
    }, animateOptions)
-// Execute the animateOnScrolling(observer)
-animations.forEach(animate => {
-   animateOnScrolling.observe(animate)
-})
 
 /**
  * @description Start the animations
